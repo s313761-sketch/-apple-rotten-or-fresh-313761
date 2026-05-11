@@ -11,7 +11,7 @@ const INPUT_SIZE = 640;
 // 二種類別價值，必須對應 Roboflow / YOLO data.yaml 的類別順序。
 const CLASS_VALUES = {
   1: 100,
-  2: 10,
+  2: 20
 };
 
 const CLASS_COLORS = ["#22c55e", "#f97316", "#38bdf8", "#e879f9", "#facc15", "#fb7185"];
