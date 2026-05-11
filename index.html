@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YOLOv8 網頁物件辨識與價值統計</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <h1>YOLOv8 物件辨識與價值統計</h1>
+      <p>上傳圖片或啟動手機後鏡頭，即可辨識物件、框選目標、顯示信心值、統計各類別數量與總價值。</p>
+    </header>
+
+    <section class="card controls">
+      <div class="control-group">
+        <label for="imageInput">上傳圖片</label>
+        <input id="imageInput" type="file" accept="image/*" />
+      </div>
+      <div class="control-group">
+        <label for="confSlider">信心值門檻：<span id="confValue">0.25</span></label>
+        <input id="confSlider" type="range" min="0.05" max="0.95" value="0.25" step="0.01" />
+      </div>
+      <div class="control-group">
+        <label for="iouSlider">NMS IoU 門檻：<span id="iouValue">0.75</span></label>
+        <input id="iouSlider" type="range" min="0.10" max="0.95" value="0.75" step="0.01" />
+      </div>
+      <div class="button-row">
+        <button id="detectImageBtn">辨識上傳圖片</button>
+        <button id="startCameraBtn">啟動手機後鏡頭</button>
+        <button id="stopCameraBtn" class="secondary">停止鏡頭</button>
+      </div>
+      <p id="status" class="status">模型載入中，請稍候...</p>
+    </section>
+
+    <section class="layout">
+      <section class="card canvas-card">
+        <div class="canvas-wrap">
+          <video id="video" playsinline muted></video>
+          <canvas id="canvas"></canvas>
+        </div>
+      </section>
+
+      <aside class="card stats-card">
+        <h2>辨識統計</h2>
+        <div class="summary">
+          <div><span class="summary-label">總數</span><strong id="totalCount">0</strong></div>
+          <div><span class="summary-label">總價值</span><strong id="totalValue">0 元</strong></div>
+        </div>
+        <table>
+          <thead><tr><th>類別</th><th>數量</th><th>單價</th><th>小計</th></tr></thead>
+          <tbody id="statsBody"><tr><td colspan="4">尚未辨識</td></tr></tbody>
+        </table>
+        <div class="note"><strong>提醒：</strong>GitHub Pages 不能直接使用 <code>best.pt</code>，請先匯出成 <code>models/best.onnx</code>。</div>
+      </aside>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
