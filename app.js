@@ -8,11 +8,10 @@ const MODEL_PATH = "models/best.onnx";
 // 若 ONNX 是用 imgsz=960 匯出，請改成 960。
 const INPUT_SIZE = 640;
 
-// 三種類別價值，必須對應 Roboflow / YOLO data.yaml 的類別順序。
+// 二種類別價值，必須對應 Roboflow / YOLO data.yaml 的類別順序。
 const CLASS_VALUES = {
-  0: 100,
-  1: 200,
-  2: 300
+  1: 100,
+  2: 10,
 };
 
 const CLASS_COLORS = ["#22c55e", "#f97316", "#38bdf8", "#e879f9", "#facc15", "#fb7185"];
