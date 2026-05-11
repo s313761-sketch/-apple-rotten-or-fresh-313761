@@ -1,2 +1,0 @@
-請把由 best.pt 匯出的 best.onnx 放在這個資料夾。
-檔名必須是：best.onnx
